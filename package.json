@@ -19,7 +19,7 @@
   "scripts": {
     "seed": "node ./scripts/seedDb.js",
     "start": "node ./bin/www",
-    "debug": "SET DEBUG=express3:* & npm start"
+    "debug": "SET DEBUG=express3:* & nodemon ./bin/www"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
