@@ -7,11 +7,19 @@
   "private": true,
   "license": "ISC",
   "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "^4.18.2",
+    "http-errors": "~1.6.3",
+    "jade": "^1.9.2",
+    "morgan": "~1.9.1",
     "sequelize": "^6.33.0",
     "sqlite3": "^5.1.6"
   },
   "scripts": {
-    "seed": "node ./scripts/seedDb.js"
+    "seed": "node ./scripts/seedDb.js",
+    "start": "node ./bin/www",
+    "debug": "SET DEBUG=express3:* & npm start"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
