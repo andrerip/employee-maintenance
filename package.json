@@ -1,0 +1,22 @@
+{
+  "name": "fullstack-assessment",
+  "version": "1.0.0",
+  "description": "Andre's FullStack Assessment. \r Project: Simple Employee Maintenance web app",
+  "main": "index.js",
+  "author": "André Ripari",
+  "private": true,
+  "license": "ISC",
+  "dependencies": {
+    "sequelize": "^6.33.0",
+    "sqlite3": "^5.1.6"
+  },
+  "scripts": {
+    "seed": "node ./scripts/seedDb.js"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "engines": {
+    "node": ">=10.16.3"
+  }
+}
