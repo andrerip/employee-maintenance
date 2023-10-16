@@ -6,15 +6,33 @@ const sequelize = new Sequelize({
 });
 
 const Department = sequelize.define('Department', {
-    name: Sequelize.STRING
+    name: {
+        type: Sequelize.STRING,
+        allowNull: false
+    }
 });
 
 const Employee = sequelize.define('Employee', {
-    firstName: Sequelize.STRING,
-    lastName: Sequelize.STRING,
-    hireDate: Sequelize.DATE,
-    phone: Sequelize.STRING,
-    address: Sequelize.STRING
+    firstName: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    lastName: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    hireDate: {
+        type: Sequelize.DATEONLY,
+        allowNull: false
+    },
+    phone: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    address: {
+        type: Sequelize.STRING,
+        allowNull: false
+    }
 });
 
 Employee.belongsTo(Department);

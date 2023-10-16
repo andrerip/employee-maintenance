@@ -1,4 +1,4 @@
-const { sequelize, Employee, Department } = require('../models/model');
+const { sequelize, Employee, Department } = require('../src/models/model');
 
 /* WARNING THIS WILL DROP THE CURRENT DATABASE */
 seed();
