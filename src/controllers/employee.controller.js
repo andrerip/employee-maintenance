@@ -25,7 +25,7 @@ const getEmployeeById = async function (req, res, next) {
 const createEmployee = async function (req, res, next) {
     try {
         const employee = await employeeService.createEmployee(req.body);
-        res.send(employee);
+        res.status(201).send(employee);
     } catch (error) {
         next(error);
     }
