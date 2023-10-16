@@ -12,7 +12,7 @@ Project: Simple Employee Maintenance web app
 
 ## Getting Set Up
 
-The exercise requires [Node.js](https://nodejs.org/en/) to be installed. I recommend using the LTS version.
+The exercise requires [Node.js 16.14 or later](https://nodejs.org/en/) to be installed. I recommend using the LTS version.
 
 1. Start by creating a local repository for this folder.
 

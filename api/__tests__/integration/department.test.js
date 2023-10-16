@@ -1,6 +1,6 @@
 const request = require('supertest');
 const httpStatus = require('http-status');
-const app = require('../../app');
+const app = require('../../api');
 
 describe('Department endpoints', () => {
     describe('GET all departments', () => {

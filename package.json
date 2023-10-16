@@ -1,37 +1,84 @@
 {
   "name": "fullstack-assessment",
   "version": "1.0.0",
-  "description": "Andre's FullStack Assessment. \r Project: Simple Employee Maintenance web app",
-  "main": "index.js",
+  "description": "Andre's FullStack Assessment. Project: Simple Employee Maintenance web app",
   "author": "André Ripari",
-  "private": true,
   "license": "ISC",
+  "private": true,
+  "scripts": {
+    "start": "concurrent --kill-others \"npm run start-prod\" \"npm run start-prod-api\"",
+    "start-prod": "better-npm-run start-prod",
+    "start-prod-api": "better-npm-run start-prod-api",
+    "seed": "node ./api/scripts/seedDb.js",
+    "start-dev": "better-npm-run start-dev",
+    "start-dev-api": "better-npm-run start-dev-api",
+    "debug": "SET DEBUG=express3:* & nodemon ./bin/api.js",
+    "test": "jest -i --colors --verbose --detectOpenHandles",
+    "test:watch": "jest -i --watchAll",
+    "build": "next build",
+    "lint": "next lint"
+  },
+  "betterScripts": {
+    "start-prod": {
+      "command": "next start",
+      "env": {
+        "NODE_PATH": "./src",
+        "NODE_ENV": "production",
+        "PORT": 8080,
+        "APIPORT": 3030
+      }
+    },
+    "start-prod-api": {
+      "command": "node ./bin/api.js",
+      "env": {
+        "NODE_PATH": "./api",
+        "NODE_ENV": "production",
+        "APIPORT": 3030
+      }
+    },
+    "start-dev": {
+      "command": "next dev",
+      "env": {
+        "NODE_PATH": "./src",
+        "NODE_ENV": "development",
+        "PORT": 3000,
+        "APIPORT": 3030
+      }
+    },
+    "start-dev-api": {
+      "command": "node ./bin/api.js",
+      "env": {
+        "NODE_PATH": "./api",
+        "NODE_ENV": "development",
+        "APIPORT": 3030
+      }
+    }
+  },
   "dependencies": {
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "^4.18.2",
     "http-errors": "~1.6.3",
     "http-status": "^1.7.0",
-    "jade": "^1.9.2",
     "morgan": "~1.9.1",
+    "next": "^13.5.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "sequelize": "^6.33.0",
     "sqlite3": "^5.1.6"
   },
-  "scripts": {
-    "seed": "node ./scripts/seedDb.js",
-    "start": "node ./bin/www",
-    "debug": "SET DEBUG=express3:* & nodemon ./bin/www",
-    "test": "jest -i --colors --verbose --detectOpenHandles",
-    "test:watch": "jest -i --watchAll"
-  },
   "devDependencies": {
     "@faker-js/faker": "^8.2.0",
+    "@types/react": "18.2.28",
+    "better-npm-run": "0.0.8",
+    "cors": "^2.8.5",
     "jest": "^29.7.0",
     "nodemon": "^3.0.1",
-    "supertest": "^6.3.3"
+    "supertest": "^6.3.3",
+    "typescript": "5.2.2"
   },
   "engines": {
-    "node": ">=10.16.3"
+    "node": ">=16.14"
   },
   "jest": {
     "testEnvironment": "node"
