@@ -25,4 +25,13 @@ The exercise requires [Node.js](https://nodejs.org/en/) to be installed. I recom
 
 ## How to start the server on Debug Mode
 
-1. Open the terminal and run `npm run debug`
+> Open the terminal and run `npm run debug`
+
+
+# How to run the tests (Unit and Integration)
+
+> Open the terminal and run `npm run test`
+
+To run with "watch" enabled:
+
+> Open the terminal and run `npm run test:watch`
