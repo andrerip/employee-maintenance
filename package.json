@@ -12,9 +12,8 @@
     "seed": "node ./api/scripts/seedDb.js",
     "start-dev": "better-npm-run start-dev",
     "start-dev-api": "better-npm-run start-dev-api",
-    "debug": "SET DEBUG=express3:* & nodemon ./bin/api.js",
-    "test": "jest -i --colors --verbose --detectOpenHandles",
-    "test:watch": "jest -i --watchAll",
+    "debug-dev-api": "better-npm-run debug-dev-api",
+    "test-api": "jest -i --colors --verbose --detectOpenHandles",
     "build": "next build",
     "lint": "next lint"
   },
@@ -48,6 +47,15 @@
     "start-dev-api": {
       "command": "node ./bin/api.js",
       "env": {
+        "NODE_PATH": "./api",
+        "NODE_ENV": "development",
+        "APIPORT": 3030
+      }
+    },
+    "debug-dev-api": {
+      "command": "nodemon ./bin/api.js",
+      "env": {
+        "DEBUG": "express3:*",
         "NODE_PATH": "./api",
         "NODE_ENV": "development",
         "APIPORT": 3030
