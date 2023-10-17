@@ -1,7 +1,13 @@
-const { Employee } = require('../models/model');
+const { Employee, Department } = require('../models/model');
 
 const getAllEmployees = async () => {
-    return await Employee.findAll();
+    return await Employee.findAll({
+        attributes: { exclude: ['DepartmentId'] },
+        include: {
+            model: Department,
+            attributes: ['id', 'name']
+        }
+    });
 }
 
 const getEmployeeById = async (id) => {
