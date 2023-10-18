@@ -23,13 +23,16 @@ export default function EmployeeList() {
     }
 
     const handleDelete = (id) => {
-        fetch(`http://localhost:3030/employees/${id}`, {
-            method: 'DELETE'
-        })
-            .then(() => {
-                setEmployees(employees.filter(employee => employee.id !== id));
+        const confirmDelete = window.confirm("Are you sure you want to delete this employee?");
+        if (confirmDelete) {
+            fetch(`http://localhost:3030/employees/${id}`, {
+                method: 'DELETE'
             })
-            .catch(error => console.log(error));
+                .then(() => {
+                    setEmployees(employees.filter(employee => employee.id !== id));
+                })
+                .catch(error => console.log(error));
+        }
     }
 
     return (
