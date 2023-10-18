@@ -4,15 +4,14 @@
  * Module dependencies.
  */
 
-var app = require('../app');
+var app = require('../api/api');
 var debug = require('debug')('express3:server');
 var http = require('http');
 
 /**
  * Get port from environment and store in Express.
  */
-
-var port = normalizePort(process.env.PORT || '3000');
+var port = normalizePort(process.env.APIPORT || '3030');
 app.set('port', port);
 
 /**
@@ -28,6 +27,8 @@ var server = http.createServer(app);
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
+
+console.info('----\n==> 🌎  API is running on port %s', port);
 
 /**
  * Normalize a port into a number, string, or false.
