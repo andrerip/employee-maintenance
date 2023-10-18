@@ -1,12 +1,12 @@
-import { Fragment } from 'react';
-import EmployeesFrame from './components/EmployeesFrame';
+import Link from 'next/link'
 
 export default function Page() {
     return (
-        <Fragment>
-            <div>
-                <EmployeesFrame />
-            </div>
-        </Fragment>
+        <>
+            <h1>Welcome Home</h1>
+            <Link href='/employee'>
+                Employees
+            </Link>
+        </>
     );
 }
