@@ -19,7 +19,7 @@ async function seed() {
     const employee1 = await Employee.create({
         firstName: 'Andre',
         lastName: 'Ripari',
-        hireDate: '2023-10-25',
+        hireDate: '2023-05-25',
         phone: '+55-11-96719906',
         address: '123 Saint John St'
     });
@@ -27,7 +27,7 @@ async function seed() {
     const employee2 = await Employee.create({
         firstName: 'John',
         lastName: 'Doe',
-        hireDate: '2023-10-26',
+        hireDate: '2022-01-01',
         phone: '+55-11-96719907',
         address: '456 Main St'
     });
@@ -35,7 +35,7 @@ async function seed() {
     const employee3 = await Employee.create({
         firstName: 'Bob',
         lastName: 'Johnson',
-        hireDate: '2024-05-15',
+        hireDate: '2021-12-31',
         phone: '+44-20-12345678',
         address: '789 Main St'
     });
@@ -43,7 +43,7 @@ async function seed() {
     const employee4 = await Employee.create({
         firstName: 'Jane',
         lastName: 'Doe',
-        hireDate: '2025-12-31',
+        hireDate: '2010-04-15',
         phone: '+33-1-23456789',
         address: '101 Main St'
     });

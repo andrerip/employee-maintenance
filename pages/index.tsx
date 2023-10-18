@@ -1,3 +1,12 @@
+import { Fragment } from 'react';
+import EmployeesFrame from './components/EmployeesFrame';
+
 export default function Page() {
-    return <h1>Hello, Next.js!</h1>
+    return (
+        <Fragment>
+            <div>
+                <EmployeesFrame />
+            </div>
+        </Fragment>
+    );
 }
