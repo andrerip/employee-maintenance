@@ -11,7 +11,13 @@ const getAllEmployees = async () => {
 }
 
 const getEmployeeById = async (id) => {
-    return await Employee.findByPk(id);
+    return await Employee.findByPk(id, {
+        attributes: { exclude: ['DepartmentId'] },
+        include: {
+            model: Department,
+            attributes: ['id', 'name']
+        }
+    });
 }
 
 const createEmployee = async (employeeData) => {
