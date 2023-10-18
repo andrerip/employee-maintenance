@@ -6,9 +6,10 @@ import { RegularButton, RedButton } from '../../components/Buttons';
 export default function EmployeeList() {
     const router = useRouter()
     const [employees, setEmployees] = useState([]);
+    const apiEmployeeUrl = process.env.apiEmployeeUrl;
 
     useEffect(() => {
-        fetch('http://localhost:3030/employees')
+        fetch(apiEmployeeUrl)
             .then(response => response.json())
             .then(data => setEmployees(data))
             .catch(error => console.log(error));
@@ -25,7 +26,7 @@ export default function EmployeeList() {
     const handleDelete = (id) => {
         const confirmDelete = window.confirm("Are you sure you want to delete this employee?");
         if (confirmDelete) {
-            fetch(`http://localhost:3030/employees/${id}`, {
+            fetch(`${apiEmployeeUrl}/${id}`, {
                 method: 'DELETE'
             })
                 .then(() => {

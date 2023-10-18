@@ -27,10 +27,12 @@ interface Department {
 
 export default function NewEmployee() {
     const router = useRouter();
+    const apiEmployeeUrl = process.env.apiEmployeeUrl;
+    const apiDepartmentUrl = process.env.apiDepartmentUrl;
 
     const [departments, setDepartments] = useState<Department[]>([]);
     useEffect(() => {
-        fetch('http://localhost:3030/departments')
+        fetch(apiDepartmentUrl)
             .then(response => response.json())
             .then(data => setDepartments(data));
     }, []);
@@ -49,7 +51,7 @@ export default function NewEmployee() {
     }
 
     const handleSendNewEmployee = (values: any) => {
-        fetch('http://localhost:3030/employees', {
+        fetch(apiEmployeeUrl, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ ...values, DepartmentId: values.department }),
