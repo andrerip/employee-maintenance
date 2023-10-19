@@ -105,10 +105,10 @@ export default function EmployeeDetail() {
     return (
         <>
             <div className='flex max-w-2xl mx-auto'>
-                <div className="basis-1/4 bg-blue-600 mr-4">
+                <div className="basis-1/4 relative bg-blue-600">
                     {employee.active
                         ? ''
-                        : <div className="flex h-8 bg-red-500 m-3 p-2 text-white justify-center">Inactive</div>
+                        : <div className="flex absolute inset-x-0 bottom-0 h-8 bg-red-500 m-3 p-2 items-center text-white">Inactive</div>
                     }
                 </div>
                 <div className="flex-auto flex-col">
