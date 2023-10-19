@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router'
-import { RegularButton, SubmitButton, RedButton } from '../../../components/Buttons';
+import { RegularButton } from '../../../components/Buttons';
 import { formatDate, timePassed } from '../../utils/date';
 
 interface Employee {
@@ -10,6 +10,7 @@ interface Employee {
     hireDate: string;
     phone: string;
     address: string;
+    active: boolean;
     Department: Department;
 }
 
@@ -29,7 +30,6 @@ export default function EmployeeDetail() {
     const [departments, setDepartments] = useState<Department[]>([]);
     const [selectedDepartmentId, setSelectedDepartmentId] = useState<number | null>();
     const [departmentChanged, setDepartmentChanged] = useState<boolean>(false);
-    const [deactivated, setDeactivated] = useState<boolean>(false);
 
     const fetchEmployeeData = () => {
         fetch(`${apiEmployeeUrl}/${employeeId}`)
@@ -77,11 +77,28 @@ export default function EmployeeDetail() {
             });
     }
 
-    const handleDeactivation = () => {
-        if (deactivated) {
-            setDeactivated(false);
+    const handleUpdateEmployeeActive = (active: boolean) => {
+        fetch(`${apiEmployeeUrl}/${employeeId}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ active: active }),
+        })
+            .then(response => response.json())
+            .then(() => {
+                fetchEmployeeData();
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    }
+
+    const toggleActivation = () => {
+        const isActive = employee.active;
+
+        if (isActive) {
+            handleUpdateEmployeeActive(false);
         } else {
-            setDeactivated(true);
+            handleUpdateEmployeeActive(true);
         }
     };
 
@@ -89,12 +106,9 @@ export default function EmployeeDetail() {
         <>
             <div className='flex max-w-2xl mx-auto'>
                 <div className="basis-1/4 bg-blue-600 mr-4">
-                    {deactivated
-                        ?
-                        <div className="flex h-8 bg-red-500 m-3 p-2 text-white justify-center" >
-                            Inactive
-                        </div>
-                        : ''
+                    {employee.active
+                        ? ''
+                        : <div className="flex h-8 bg-red-500 m-3 p-2 text-white justify-center">Inactive</div>
                     }
                 </div>
                 <div className="flex-auto flex-col">
@@ -121,10 +135,10 @@ export default function EmployeeDetail() {
                     <p>{timePassed(employee.hireDate)}</p>
                     <div className='flex-none'>
                         <button
-                            onClick={handleDeactivation}
-                            className={deactivated ? "bg-green-500 w-28 border-black border-2 rounded-2xl py-2 px-4" : "bg-red-500 w-28 border-black border-2 rounded-2xl py-2 px-4"}
+                            onClick={toggleActivation}
+                            className={employee.active ? "bg-red-500 w-28 border-black border-2 rounded-2xl py-2 px-4" : "bg-green-500 w-28 border-black border-2 rounded-2xl py-2 px-4"}
                         >
-                            {deactivated ? 'Activate' : 'Deactivate'}
+                            {employee.active ? 'Deactivate' : 'Activate'}
                         </button>
                     </div>
                 </div>
