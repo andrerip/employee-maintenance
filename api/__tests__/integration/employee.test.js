@@ -13,8 +13,7 @@ describe('Employee endpoints', () => {
                 email: 'johndoe@example.com',
                 phone: '1234567890',
                 hireDate: '2021-10-01',
-                address: '123 Main St',
-                departmentId: 1
+                address: '123 Main St'
             };
 
             const res = await request(app).post('/employees').send(newEmployee);
@@ -29,6 +28,7 @@ describe('Employee endpoints', () => {
             const res = await request(app).get(`/employees/${employeeId}`);
             expect(res.statusCode).toEqual(httpStatus.OK);
             expect(res.body).toHaveProperty('id', employeeId);
+            expect(res.body).toHaveProperty('active', true);
         });
     });
 
@@ -41,6 +41,19 @@ describe('Employee endpoints', () => {
             const res = await request(app).put(`/employees/${employeeId}`).send(updatedEmployee);
             expect(res.statusCode).toEqual(httpStatus.OK);
             expect(res.body).toHaveProperty('address', updatedEmployee.address);
+        });
+    });
+
+    describe('update employee active status by ID', () => {
+        it('should update the employee active status by ID', async () => {
+            const updatedEmployee = {
+                active: false
+            };
+
+            const res = await request(app).put(`/employees/${employeeId}`).send(updatedEmployee);
+            expect(res.statusCode).toEqual(httpStatus.OK);
+            expect(res.body).toHaveProperty('active', updatedEmployee.active);
+            expect(res.body.active).toBe(false);
         });
     });
 

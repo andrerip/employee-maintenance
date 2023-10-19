@@ -9,11 +9,11 @@
     "start": "concurrent --kill-others \"npm run start-prod\" \"npm run start-prod-api\"",
     "start-prod": "better-npm-run start-prod",
     "start-prod-api": "better-npm-run start-prod-api",
-    "seed": "node ./api/scripts/seedDb.js",
     "start-dev": "better-npm-run start-dev",
     "start-dev-api": "better-npm-run start-dev-api",
     "debug-dev-api": "better-npm-run debug-dev-api",
-    "test-api": "jest -i --colors --verbose --detectOpenHandles",
+    "seed": "node ./api/scripts/seedDb.js",
+    "test": "jest -i --colors --verbose --detectOpenHandles",
     "build": "next build",
     "lint": "next lint"
   },
@@ -88,8 +88,5 @@
   },
   "engines": {
     "node": ">=16.14"
-  },
-  "jest": {
-    "testEnvironment": "node"
   }
 }

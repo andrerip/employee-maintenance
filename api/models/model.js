@@ -32,6 +32,11 @@ const Employee = sequelize.define('Employee', {
     address: {
         type: Sequelize.STRING,
         allowNull: false
+    },
+    active: {
+        type: Sequelize.BOOLEAN,
+        allowNull: true,
+        defaultValue: true
     }
 });
 
