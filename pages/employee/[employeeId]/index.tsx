@@ -124,7 +124,7 @@ export default function EmployeeDetail() {
                                 <option key={department.id} value={department.id}>{department.name}</option>
                             ))}
                         </select>
-                        <button type="submit" disabled={!departmentChanged} className="border-black border-2 rounded-2xl py-2 px-4 hover:bg-green-300">
+                        <button type="submit" disabled={!departmentChanged} className="bg-green-500 w-28 border-black border-2 rounded-2xl py-2 px-4">
                             {"Update"}
                         </button>
                     </form>
