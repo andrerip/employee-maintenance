@@ -23,5 +23,12 @@
 }
 
 @tailwind components;
-
 @tailwind utilities;
+
+button:disabled,
+button:disabled:hover {
+  background-color: gray;
+  border-color: gray;
+  color: darkgray;
+  cursor: default;
+}
