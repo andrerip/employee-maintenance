@@ -22,6 +22,20 @@ const getEmployeeById = async function (req, res, next) {
     }
 }
 
+const getDepartmentHistory = async function (req, res, next) {
+    try {
+        const employee = await employeeService.getEmployeeById(req.params.id);
+        if (employee) {
+            const departmentHistory = await employeeService.getDepartmentHistory(employee);
+            res.send(departmentHistory);
+        } else {
+            res.status(404).send({ error: "Employee not found" });
+        }
+    } catch (error) {
+        next(error);
+    }
+}
+
 const createEmployee = async function (req, res, next) {
     try {
         const employee = await employeeService.createEmployee(req.body);
@@ -62,6 +76,7 @@ const deleteEmployee = async function (req, res, next) {
 module.exports = {
     getEmployees,
     getEmployeeById,
+    getDepartmentHistory,
     createEmployee,
     updateEmployee,
     deleteEmployee

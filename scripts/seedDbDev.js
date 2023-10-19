@@ -1,4 +1,4 @@
-const { sequelize, Employee, Department } = require('./../api/models/model');
+const { sequelize, Employee, Department, DepartmentHistory } = require('./../api/models/model');
 
 /* WARNING THIS WILL DROP THE CURRENT DATABASE */
 seed();
@@ -28,6 +28,13 @@ async function seed() {
         address: '123 Saint John St',
         active: true
     });
+    await employee1.setDepartment(itDepartment);
+    await DepartmentHistory.create({
+        DepartmentId: itDepartment.id,
+        EmployeeId: employee1.id,
+        startDate: '2023-05-25'
+    });
+
 
     const employee2 = await Employee.create({
         firstName: 'John',
@@ -37,6 +44,13 @@ async function seed() {
         address: '456 Main St',
         active: false
     });
+    await employee2.setDepartment(hrDepartment);
+    await DepartmentHistory.create({
+        DepartmentId: hrDepartment.id,
+        EmployeeId: employee2.id,
+        startDate: '2022-01-01'
+    });
+
 
     const employee3 = await Employee.create({
         firstName: 'Bob',
@@ -46,6 +60,13 @@ async function seed() {
         address: '789 Main St',
         active: true
     });
+    await employee3.setDepartment(hrDepartment);
+    await DepartmentHistory.create({
+        DepartmentId: hrDepartment.id,
+        EmployeeId: employee3.id,
+        startDate: '2021-12-31'
+    });
+
 
     const employee4 = await Employee.create({
         firstName: 'Jane',
@@ -55,11 +76,12 @@ async function seed() {
         address: '101 Main St',
         active: true
     });
-
-    await employee1.setDepartment(itDepartment);
-    await employee2.setDepartment(hrDepartment);
-    await employee3.setDepartment(hrDepartment);
     await employee4.setDepartment(accountingDepartment);
+    await DepartmentHistory.create({
+        DepartmentId: accountingDepartment.id,
+        EmployeeId: employee4.id,
+        startDate: '2010-04-15'
+    });
 
     console.log('Database seeded');
 }
