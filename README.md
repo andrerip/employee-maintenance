@@ -1,9 +1,45 @@
-# fullstack-assessment
 
-Andre's FullStack Assessment. 
-Project: Simple Employee Maintenance web app
+> Andre's FullStack Assessment. Project: Simple Employee Maintenance web app
 
-## Data Models
+# About my solution
+
+In this assignment, I built a web application using a tech stack that combines the power of Express.js, Next.js, and Tailwind CSS. The project is structured within a mono repo, providing a seamless development experience.
+
+## Backend
+### Express.js
+For the backend, I chose Express.js, a widely-used and well-documented Node.js framework. Express.js allowed me to build a robust and efficient server. It follows a Model-View-Controller (MVC) architecture, making the codebase organized and maintainable. Express.js is known for its speed and scalability, which makes it a solid choice for building RESTful APIs and handling HTTP requests efficiently.
+
+### SQLite3
+As the database system, I opted for SQLite3. This choice is excellent for small to medium-sized applications, as it is lightweight and serverless, which simplifies the setup. SQLite3 provides persistent storage on disk, ensuring data integrity and reliability. Its flexibility and simplicity made it a great fit for this project.
+
+### Better-npm-run
+To streamline the configuration management of the project, I utilized Better-npm-run. This tool helped manage scripts within the package.json file, making it easier to run various tasks, such as building and running the application. It enhances the development process by simplifying and automating routine tasks.
+
+### ESLint
+ESLint was employed for code quality and style consistency. It's a widely adopted tool for identifying and fixing problems in JavaScript code. By using ESLint, I ensured that the code adheres to best practices and maintains a high level of quality.
+
+### Testing
+I adopted a comprehensive testing approach for this project. Unit testing was performed on the model, validating the correctness of the individual components. 
+
+Additionally, integration tests were conducted among the backend endpoints to ensure the smooth interaction of different parts of the application.
+
+### Database Seeding
+I incorporated a script for seeding the database and configuring initial values, such as Departments. This feature ensures that the application starts with predefined data, allowing for a smooth user experience from the beginning.
+
+## Frontend
+### Next.js
+For the frontend, I selected Next.js, a React framework known for its performance, scalability, and developer-friendly features. Next.js provides server-side rendering, automatic code splitting, and routing, making it perfect for building fast and SEO-friendly web applications. The choice of Next.js allowed me to create a dynamic and responsive user interface.
+
+### Tailwind CSS
+For styling, I harnessed the power of Tailwind CSS. Tailwind is a utility-first CSS framework that simplifies the design process and provides a consistent and visually appealing user interface. It enables rapid development by applying pre-defined styles, which significantly accelerates the frontend development workflow.
+
+## Conclusion
+The combination of Express.js, Next.js, Tailwind CSS, and the other tools mentioned above creates a robust, maintainable, and high-performance web application. 
+
+The use of these technologies ensures a seamless development experience, efficient resource management, and a user-friendly interface. This tech stack allowed me to deliver a reliable and well-structured solution for this assignment.
+
+
+# Data Models
 
 > **All models are defined in src/models/model.js**
 
@@ -74,3 +110,4 @@ The exercise requires [Node.js 16.14 or later](https://nodejs.org/en/) to be ins
 1. Open another terminal and run `npm run start-prod` which should start the frontend server. LEAVE it running.
 
 1. Open the URL localhost:8080/ on a browser of your choice and test the application to see if suceeded. If failed, check if you did not change port 8080 by another one.
+
