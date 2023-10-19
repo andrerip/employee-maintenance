@@ -2,11 +2,11 @@
 function formatDate(dateString: string) {
     const date = new Date(dateString);
     const year = date.getFullYear();
-    const month = date.toLocaleString('en-US', { month: 'short' });
+    const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    const month = monthNames[date.getMonth()];
     const day = date.getUTCDate();
     return `${month} ${day}, ${year}`;
 }
-
 
 // return a string in a format like "2y - 1m - 3d"
 function timePassed(dateString: string) {

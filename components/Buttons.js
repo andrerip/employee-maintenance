@@ -1,6 +1,6 @@
 const RegularButton = ({ handle, text }) => {
     return (
-        <button className="border-black border-2 rounded-2xl py-2 px-4 hover:bg-green-300" onClick={handle}>
+        <button className="border-black border-2 rounded-2xl py-2 px-4" onClick={handle}>
             {" "}
             {text}
         </button>

@@ -35,7 +35,7 @@ export default function NewEmployee() {
         fetch(apiDepartmentUrl)
             .then(response => response.json())
             .then(data => setDepartments(data));
-    }, []);
+    }, [apiDepartmentUrl]);
 
     const initialValues = {
         firstName: '',

@@ -1,5 +1,5 @@
 const { faker } = require('@faker-js/faker');
-const { Department, Employee } = require('../../src/models/model');
+const { Department, Employee } = require('../../models/model');
 
 describe('Model tests', () => {
     describe('Employee validation', () => {
@@ -10,7 +10,8 @@ describe('Model tests', () => {
                 lastName: faker.person.lastName(),
                 hireDate: faker.date.past(),
                 phone: faker.phone.number(),
-                address: faker.location.streetAddress()
+                address: faker.location.streetAddress(),
+                active: true
             };
         });
 
@@ -21,7 +22,8 @@ describe('Model tests', () => {
                 lastName: expect.any(String),
                 hireDate: expect.any(String),
                 phone: expect.any(String),
-                address: expect.any(String)
+                address: expect.any(String),
+                active: expect.any(Boolean)
             }));
         });
 
