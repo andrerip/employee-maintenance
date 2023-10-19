@@ -22,7 +22,7 @@ const getEmployeeById = async (id) => {
 
 const getDepartmentHistory = async (employee) => {
     return await employee.getDepartmentHistories({
-        attributes: ['startDate'],
+        attributes: ['id', 'startDate'],
         include: {
             model: Department,
             attributes: ['id', 'name']
@@ -50,7 +50,7 @@ const createEmployee = async (employeeData) => {
 const updateEmployee = async (employee, newEmployeeData) => {
     const t = await sequelize.transaction();
     try {
-        if(newEmployeeData.DepartmentId !== employee.Department.id) {
+        if (newEmployeeData.DepartmentId && newEmployeeData.DepartmentId !== employee.Department.id) {
             await DepartmentHistory.create({
                 DepartmentId: newEmployeeData.DepartmentId,
                 EmployeeId: employee.id,

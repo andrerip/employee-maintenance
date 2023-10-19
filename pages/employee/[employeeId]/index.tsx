@@ -19,6 +19,12 @@ interface Department {
     name: string;
 }
 
+interface DepartmentHistory {
+    id: number;
+    startDate: string;
+    Department: Department;
+}
+
 export default function EmployeeDetail() {
     const router = useRouter();
     const apiEmployeeUrl = process.env.apiEmployeeUrl;
@@ -28,6 +34,8 @@ export default function EmployeeDetail() {
 
     const [employee, setEmployee] = useState({} as Employee);
     const [departments, setDepartments] = useState<Department[]>([]);
+    const [departmentHistory, setDepartmentHistory] = useState<DepartmentHistory[]>([]);
+
     const [selectedDepartmentId, setSelectedDepartmentId] = useState<number | null>();
     const [departmentChanged, setDepartmentChanged] = useState<boolean>(false);
 
@@ -42,8 +50,21 @@ export default function EmployeeDetail() {
             .catch(error => console.log(error));
     }
 
+    const fetchDepartmentHistory = () => {
+        fetch(`${apiEmployeeUrl}/${employeeId}/departmentHistory`)
+            .then(response => response.json())
+            .then(data => {
+                setDepartmentHistory(data);
+            })
+            .catch(error => console.log(error));
+    }
+
     useEffect(() => {
         fetchEmployeeData();
+    }, [employeeId]);
+
+    useEffect(() => {
+        fetchDepartmentHistory();
     }, [employeeId]);
 
     useEffect(() => {
@@ -71,6 +92,7 @@ export default function EmployeeDetail() {
             .then(response => response.json())
             .then(() => {
                 fetchEmployeeData();
+                fetchDepartmentHistory();
             })
             .catch((error) => {
                 console.error('Error:', error);
@@ -94,7 +116,6 @@ export default function EmployeeDetail() {
 
     const toggleActivation = () => {
         const isActive = employee.active;
-
         if (isActive) {
             handleUpdateEmployeeActive(false);
         } else {
@@ -142,6 +163,27 @@ export default function EmployeeDetail() {
                         </button>
                     </div>
                 </div>
+            </div>
+            <div className='flex max-w-2xl mx-auto'>
+                <h2>Department History</h2>
+            </div>
+            <div className='max-w-2xl mx-auto'>
+                <table className="table-fixed">
+                    <thead>
+                        <tr className='bg-gray-500 text-center'>
+                            <th className="px-6 py-2">Date</th>
+                            <th className="px-6 py-2">Department</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {Array.isArray(departmentHistory) && departmentHistory.map(history => (
+                            <tr key={history.id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                <td className="px-4 py-2">{formatDate(history.startDate)}</td>
+                                <td className="px-6 py-2">{history.Department.name}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
             </div>
             <div className="flex justify-center items-center">
                 <RegularButton handle={handleCancel} text="Close" />
