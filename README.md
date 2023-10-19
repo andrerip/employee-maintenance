@@ -64,11 +64,13 @@ The exercise requires [Node.js 16.14 or later](https://nodejs.org/en/) to be ins
 
 1. Configure the departments of your company by editing the file `scripts\departments.json`
 
+1. On the terminal, run `npm run build` to deploy a ".next" folder fully optimized
+
 1. Next, on the terminal, run `npm run seed`. It will create the local SQLite database and seed it with the departments you have configured.
 **Warning: This will drop the database if it exists**. The database lives in a local file `database.sqlite3`.
 
-1. Open a terminal and run `npm run start-prod-api` which should start the api. Leave it running.
+1. Open a terminal and run `npm run start-prod-api` which should start the api. LEAVE it running.
 
-1. Open another terminal and run `npm run start-prod` which should start the frontend server. Leave it running.
+1. Open another terminal and run `npm run start-prod` which should start the frontend server. LEAVE it running.
 
 1. Open the URL localhost:8080/ on a browser of your choice and test the application to see if suceeded. If failed, check if you did not change port 8080 by another one.

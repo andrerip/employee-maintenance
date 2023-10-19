@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router'
 import { RegularButton } from '../../../components/Buttons';
-import { formatDate, timePassed } from '../../utils/date';
+import { formatDate, timePassed } from '../../../components/utils/date';
 
 interface Employee {
     id: number;
@@ -71,7 +71,7 @@ export default function EmployeeDetail() {
         fetch(apiDepartmentUrl)
             .then(response => response.json())
             .then(data => setDepartments(data));
-    }, []);
+    }, [apiDepartmentUrl]);
 
     const handleDepartmentChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setSelectedDepartmentId(parseInt(event.target.value));

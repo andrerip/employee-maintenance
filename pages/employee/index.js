@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router'
-import { formatDate, timePassed } from "../utils/date";
+import { formatDate, timePassed } from "../../components/utils/date";
 import { RegularButton, RedButton } from '../../components/Buttons';
 
 export default function EmployeeList() {
@@ -13,7 +13,7 @@ export default function EmployeeList() {
             .then(response => response.json())
             .then(data => setEmployees(data))
             .catch(error => console.log(error));
-    }, []);
+    }, [apiEmployeeUrl]);
 
     const handleNewEmployee = () => {
         router.push('/employee/new');
