@@ -1,4 +1,4 @@
-const { sequelize, Employee, Department } = require('../models/model');
+const { sequelize, Employee, Department } = require('./../api/models/model');
 
 /* WARNING THIS WILL DROP THE CURRENT DATABASE */
 seed();
@@ -9,15 +9,15 @@ async function seed() {
 
     // seed data
     const itDepartment = await Department.create({
-        name: 'IT Department'
+        name: 'IT'
     });
 
     const hrDepartment = await Department.create({
-        name: 'HR Department'
+        name: 'HR'
     });
 
     const accountingDepartment = await Department.create({
-        name: 'Accounting Department'
+        name: 'Accounting'
     });
 
     const employee1 = await Employee.create({

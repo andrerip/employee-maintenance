@@ -10,20 +10,20 @@ Project: Simple Employee Maintenance web app
 ![Entity Diagram](./docs/entity-diagram.png)
 
 
-# Getting Set Up
+# Pre-requisites
 
 The exercise requires [Node.js 16.14 or later](https://nodejs.org/en/) to be installed. I recommend using the LTS version.
 
-1. Start by creating a local repository for this folder.
+> Start by creating a local repository for this folder.
+
+
+# DEV
+
+## Getting Set Up
 
 1. In the repo root directory, open a terminal and run `npm install` to gather all dependencies.
 
-1. Next, on the terminal, `npm run seed` will seed the local SQLite database. **Warning: This will drop the database if it exists**. The database lives in a local file `database.sqlite3`.
-
-
-# Dev tasks
-
-## How to start the api(backend) and server(front) on Dev
+1. Next, on the terminal, `npm run seed-dev` will seed the local SQLite database with all tables populated with some tests. **Warning: This will drop the database if it exists**. The database lives in a local file `database.sqlite3`.
 
 1. Open a terminal and run `npm run start-dev-api` which should start the api. Leave it running.
 
@@ -31,9 +31,12 @@ The exercise requires [Node.js 16.14 or later](https://nodejs.org/en/) to be ins
 
 1. Open the URL localhost:3000/ on a browser of your choice.
 
+
 ## How to start the backend server on Debug Mode
 
-> Open the terminal and run `npm run debug-dev-api`
+1. Stop all other instances of the terminal
+
+1. Open the terminal and run `npm run debug-dev-api`
 
 
 ## How to run the tests (Unit and Integration)
@@ -50,12 +53,22 @@ The exercise requires [Node.js 16.14 or later](https://nodejs.org/en/) to be ins
 1. Change the property "PORT" for the one that you need (the default Prod port is 8080 and Dev is 3000)
 
 
-# Prod tasks
 
-## How to start the api(backend) and server(front) on Prod
+# PROD
+
+## Building and deploying manually
+
+1. Log into the production server and clone this project repository to it.
+
+1. In the repo root directory, open a terminal and run `npm install` to gather all dependencies.
+
+1. Configure the departments of your company by editing the file `scripts\departments.json`
+
+1. Next, on the terminal, run `npm run seed`. It will create the local SQLite database and seed it with the departments you have configured.
+**Warning: This will drop the database if it exists**. The database lives in a local file `database.sqlite3`.
 
 1. Open a terminal and run `npm run start-prod-api` which should start the api. Leave it running.
 
 1. Open another terminal and run `npm run start-prod` which should start the frontend server. Leave it running.
 
-1. Open the URL localhost:8080/ on a browser of your choice.
+1. Open the URL localhost:8080/ on a browser of your choice and test the application to see if suceeded. If failed, check if you did not change port 8080 by another one.

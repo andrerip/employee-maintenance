@@ -12,7 +12,8 @@
     "start-dev": "better-npm-run start-dev",
     "start-dev-api": "better-npm-run start-dev-api",
     "debug-dev-api": "better-npm-run debug-dev-api",
-    "seed": "node ./api/scripts/seedDb.js",
+    "seed": "node ./scripts/seedDb.js",
+    "seed-dev": "node ./scripts/seedDbDev.js",
     "test": "jest -i --colors --verbose --detectOpenHandles",
     "build": "next build",
     "lint": "next lint"
